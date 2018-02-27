@@ -49,6 +49,13 @@ from config import Config
 import utils
 import model as modellib
 
+# Disallow eager use of GPU memory
+import tensorflow as tf
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+config.gpu_options.visible_device_list = "0"
+tf.Session(config=config)
+
 # Root directory of the project
 ROOT_DIR = os.getcwd()
 
